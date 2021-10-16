@@ -1,17 +1,17 @@
 import React from "react";
-// Import components
+// Components
 import LandingCard from "./LandingCard/index";
 import Footer from "./Footer/index";
 import Timeline from "./Timeline/index";
 import Contact from "./Contact/index";
 
-const Home = () => {
+const Home = ({ darkMode }) => {
   return (
     <>
-      <LandingCard />
-      <Timeline />
-      <Contact />
-      <Footer />
+      <LandingCard darkMode={darkMode} />
+      <Timeline darkMode={darkMode} />
+      <Contact darkMode={darkMode} />
+      <Footer darkMode={darkMode} />
     </>
   );
 };

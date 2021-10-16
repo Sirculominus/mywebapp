@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background-color: var(--lightGrey);
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(229, 229, 229, 1) 100%
-  );
+  background: ${(props) =>
+    props.darkMode
+      ? "radial-gradient(circle, rgba(67,67,68,0.8813900560224089) 5%, rgba(67,67,68,1) 25%, rgba(67,67,68,1) 100%)"
+      : "radial-gradient(ellipse at center,rgba(255, 255, 255, 1) 0%,rgba(229, 229, 229, 1) 100%)"};
+
   border-radius: 30px;
   font-family: Helvetica, sans-serif;
   position: relative;
@@ -47,7 +46,15 @@ export const Content = styled.div`
   background-color: var(--white);
   position: relative;
   border-radius: 6px;
-  background: rgb(175, 175, 175);
+  background: ${(props) =>
+    props.darkMode
+      ? "radial-gradient(circle, rgba(45,45,45,0.8813900560224089) 0%, rgba(41,41,41,1) 84%, rgba(41,41,41,1) 100%)"
+      : "rgb(175, 175, 175)"};
+
+  li {
+    list-style-type: square;
+    margin: 7px 0;
+  }
 `;
 
 export const Box = styled.div`
@@ -57,62 +64,79 @@ export const Box = styled.div`
   width: 50%;
   margin: 100px 0 100px 0;
 
+  ${({ position }) => {
+    if (position === "0") return `left: 0;`;
+  }}
+
+  ${({ position }) => {
+    if (position === "50") return `left: 50%;`;
+  }}
+
+  &:before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    border: medium solid rgb(175, 175, 175);
+
+    ${({ position }) => {
+      if (position === "0")
+        return `
+          right: 30px;
+          border-width: 10px 0 10px 10px;`;
+    }}
+
+    ${({ position }) => {
+      if (position === "50")
+        return `
+          left: 30px;
+          border-width: 10px 10px 10px 0;`;
+    }}
+
+    ${({ position, darkMode }) => {
+      if (position === "0" && !darkMode)
+        return `
+          border-color: transparent transparent transparent rgb(175,175,175);`;
+    }}
+
+    ${({ position, darkMode }) => {
+      if (position === "0" && darkMode)
+        return `
+          border-color: transparent transparent transparent rgba(41,41,41,1);`;
+    }}
+
+    ${({ position, darkMode }) => {
+      if (position === "50" && !darkMode)
+        return `
+          border-color: transparent rgb(175,175,175) transparent transparent;`;
+    }}
+
+        ${({ position, darkMode }) => {
+      if (position === "50" && darkMode)
+        return `
+          border-color: transparent rgba(41,41,41,1) transparent transparent;`;
+    }}
+  }
+
   &:after {
     content: "";
     position: absolute;
     width: 25px;
     height: 25px;
     right: -17px;
-    background-color: var(--white);
+    background-color: ${(props) =>
+      props.darkMode ? "var(--black)" : "var(--lightGrey)"};
     border: 4px solid #ff9f55;
     top: 15px;
     border-radius: 50%;
     z-index: 1;
+
+    ${({ position }) => {
+      if (position === "50") return `left: -16px;`;
+    }}
   }
-
-  ${({ position }) => {
-    if (position === "0")
-      return `
-            left: 0;
-
-            &:before {
-                content: " ";
-                height: 0;
-                position: absolute;
-                top: 22px;
-                width: 0;
-                z-index: 1;
-                right: 30px;
-                border: medium solid rgb(175,175,175);
-                border-width: 10px 0 10px 10px;
-                border-color: transparent transparent transparent rgb(175,175,175);
-            }
-        `;
-  }}
-
-  ${({ position }) => {
-    if (position === "50")
-      return `
-            left: 50%;
-
-            &:before {
-                content: " ";
-                height: 0;
-                position: absolute;
-                top: 22px;
-                width: 0;
-                z-index: 1;
-                left: 30px;
-                border: medium solid rgb(175,175,175);
-                border-width: 10px 10px 10px 0;
-                border-color: transparent rgb(175,175,175) transparent transparent;
-            }
-
-            &:after {
-                left: -16px;
-            }
-        `;
-  }}
 `;
 
 export const Year = styled.div`
@@ -122,24 +146,22 @@ export const Year = styled.div`
 
   h1 {
     margin-top: 14px;
+    width: 50%;
+
     ${({ position }) => {
       if (position === "0")
         return `
-            float: right;
-            width: 50%;
-            padding-left: 30px;
-            
-
+          float: right;
+          padding-left: 30px;
         `;
     }};
 
     ${({ position }) => {
       if (position === "50")
         return `
-            float: left;
-            width: 50%;
-            padding-right: 30px;
-            text-align: right;
+          float: left;
+          padding-right: 30px;
+          text-align: right;
         `;
     }};
   }

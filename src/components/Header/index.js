@@ -1,39 +1,67 @@
 import React from "react";
-// Import styles
+// Styles
 import { Wrapper, Content, Text, HamburgerMenu } from "./Header.styles";
-// import icon
-import { HiOutlineMenu, HiX } from "react-icons/hi";
+// Icons
+import { HiOutlineMenu, HiX, HiMoon, HiSun } from "react-icons/hi";
+import { Left } from "../LandingCard/LandingCard.styles";
 
-const Header = ({ hamburgerOpen, handleToggle }) => {
+const Header = ({
+  hamburgerOpen,
+  handleToggle,
+  handleToggleDarkMode,
+  darkMode,
+}) => {
   return (
-    <Wrapper>
+    <Wrapper darkMode={darkMode}>
       <Content hamburgerOpen={hamburgerOpen}>
         <Text>
           <h2>My portfolio</h2>
         </Text>
         {hamburgerOpen ? (
           <HiX
-            style={{ margin: "10px 0 0 0" }}
+            style={
+              darkMode
+                ? { margin: "10px 0 0 0", color: "var(--white)" }
+                : { margin: "10px 0 0 0", color: "var(--black)" }
+            }
             size="40"
             onClick={handleToggle}
           />
         ) : (
           <HiOutlineMenu
-            style={{ margin: "10px 0 0 0" }}
+            style={
+              darkMode
+                ? { margin: "10px 0 0 0", color: "var(--white)" }
+                : { margin: "10px 0 0 0", color: "var(--black)" }
+            }
             size="40"
             onClick={handleToggle}
           />
         )}
-
         {hamburgerOpen ? (
           <HamburgerMenu>
             <ul>
-              <strong>Coming:</strong>
+              {darkMode ? (
+                <HiSun
+                  onClick={handleToggleDarkMode}
+                  style={{ color: "var(--white)", float: "right" }}
+                  size="40"
+                />
+              ) : (
+                <HiMoon
+                  onClick={handleToggleDarkMode}
+                  style={{ color: "var(--black)", float: "right" }}
+                  size="40"
+                />
+              )}
+
+              <li>
+                <strong>Coming:</strong>
+              </li>
+              <li>Donation</li>
+              <li>More details of my journey</li>
+              <li>Social functions</li>
             </ul>
-            <ul>Dark mode</ul>
-            <ul>Donation</ul>
-            <ul>More details of my journey</ul>
-            <ul>Social functions</ul>
           </HamburgerMenu>
         ) : (
           <></>

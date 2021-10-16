@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background: var(--white);
+  background: ${(props) => (props.darkMode ? "var(--black)" : "var(--white)")};
   padding: 0 20px;
   position: fixed;
   z-index: 10;
@@ -23,6 +23,12 @@ export const Content = styled.div`
   button {
     height: 50px;
   }
+
+  svg {
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
 `;
 
 export const Text = styled.div``;
@@ -33,4 +39,23 @@ export const HamburgerMenu = styled.div`
   height: 100%;
   left: 0;
   top: 100px;
+
+  ul {
+  }
+
+  li {
+    width: 300px;
+    padding: 10px 0 10px 0;
+    margin: 0 auto;
+    list-style-type: none;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  svg {
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
 `;

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background-color: var(--white);
+  background-color: ${(props) =>
+    props.darkMode ? "var(--darkGrey)" : "var(--white)"};
   bottom: auto;
   position: fixed;
   width: 100%;

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-// Import styles
+// Styles
 import { Wrapper, Content, Box, Year, Title } from "./Timeline.styles";
-// Import api service
+// Api service
 import EventDataService from "../../services/event";
 
-const Timeline = () => {
+const Timeline = ({ darkMode }) => {
   const [events, setEvents] = useState([]);
 
   const retrieveEvents = () => {
@@ -22,7 +22,7 @@ const Timeline = () => {
   }, []);
 
   return (
-    <Wrapper>
+    <Wrapper darkMode={darkMode}>
       <Title>My journey</Title>
       {events.map((event, index) => {
         var dateFrom = new Date(event.date_from);
@@ -33,13 +33,15 @@ const Timeline = () => {
             <Year position={index % 2 === 0 ? "0" : "50"}>
               <h1>{dateFromYear}</h1>
             </Year>
-            <Box position={index % 2 === 0 ? "0" : "50"}>
-              <Content>
+            <Box position={index % 2 === 0 ? "0" : "50"} darkMode={darkMode}>
+              <Content darkMode={darkMode}>
                 <h2>{event.name}</h2>
                 <h4>{event.role}</h4>
-                {event.description.map((description, index2) => {
-                  return <li key={index2}>{description}</li>;
-                })}
+                <ul>
+                  {event.description.map((description, index2) => {
+                    return <li key={index2}>{description}</li>;
+                  })}
+                </ul>
               </Content>
             </Box>
           </div>

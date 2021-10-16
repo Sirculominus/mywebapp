@@ -1,10 +1,10 @@
 import React from "react";
-// Import styles
+// Styles
 import { Wrapper, Content } from "./Footer.styles";
 
-const Footer = () => {
+const Footer = ({ darkMode }) => {
   return (
-    <Wrapper>
+    <Wrapper darkMode={darkMode}>
       <Content>
         <p>
           Written by me in <a href="https://reactjs.org/">React</a>. Hosted on{" "}

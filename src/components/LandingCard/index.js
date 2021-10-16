@@ -1,4 +1,5 @@
 import React from "react";
+// Styles
 import {
   Wrapper,
   Content,
@@ -9,9 +10,9 @@ import {
   ListItem,
 } from "../LandingCard/LandingCard.styles";
 
-const LandingCard = () => {
+const LandingCard = ({ darkMode }) => {
   return (
-    <Wrapper>
+    <Wrapper darkMode={darkMode}>
       <Content>
         <Left>
           <Image src="/images/portrait.jpg" alt="Portrait" />

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-// Import styles
+// Styles
 import { Wrapper, Content, ResponseMessage } from "./Contact.styles";
-//import forms
+// Forms
 import { useForm } from "react-hook-form";
-// Import Realm
+// MongoDB Realm
 import * as Realm from "realm-web";
 
-const Contact = () => {
+const Contact = ({ darkMode }) => {
   const { register, handleSubmit } = useForm();
   const [result, setResult] = useState(null);
   const onSubmit = (data) => {
@@ -51,7 +51,7 @@ const Contact = () => {
   }
 
   return (
-    <Wrapper>
+    <Wrapper darkMode={darkMode}>
       <Content>
         {result ? (
           <>
