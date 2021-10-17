@@ -35,6 +35,9 @@ const Timeline = ({ darkMode }) => {
             </Year>
             <Box position={index % 2 === 0 ? "0" : "50"} darkMode={darkMode}>
               <Content darkMode={darkMode}>
+                <div>
+                  <img src={event.logo} alt={event.name} />
+                </div>
                 <h2>{event.name}</h2>
                 <h4>{event.role}</h4>
                 <ul>

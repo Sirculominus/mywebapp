@@ -9,6 +9,8 @@ import {
   List,
   ListItem,
 } from "../LandingCard/LandingCard.styles";
+// Icons
+import { FaLinkedin, FaGithubSquare } from "react-icons/fa";
 
 const LandingCard = ({ darkMode }) => {
   return (
@@ -33,6 +35,22 @@ const LandingCard = ({ darkMode }) => {
             <ListItem>
               <h3>Interests</h3>
               <p>Computers, coding, blockchain and new tech</p>
+            </ListItem>
+            <ListItem>
+              <a
+                href="https://www.linkedin.com/in/sindre-johnsen-341464172/"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <FaLinkedin size="40" />
+              </a>
+              <a
+                href="https://github.com/Sirculominus"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <FaGithubSquare size="40" />
+              </a>
             </ListItem>
           </List>
         </Right>

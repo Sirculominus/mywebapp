@@ -3,19 +3,27 @@ import React from "react";
 import { Wrapper, Content, Text, HamburgerMenu } from "./Header.styles";
 // Icons
 import { HiOutlineMenu, HiX, HiMoon, HiSun } from "react-icons/hi";
-import { Left } from "../LandingCard/LandingCard.styles";
+// Routes
+import { Link } from "react-router-dom";
 
 const Header = ({
   hamburgerOpen,
   handleToggle,
   handleToggleDarkMode,
   darkMode,
+  handleCloseHamburger,
 }) => {
   return (
     <Wrapper darkMode={darkMode}>
       <Content hamburgerOpen={hamburgerOpen}>
         <Text>
-          <h2>My portfolio</h2>
+          <Link
+            to="/"
+            style={{ textDecoration: "none" }}
+            onClick={handleCloseHamburger}
+          >
+            <h2>My portfolio</h2>
+          </Link>
         </Text>
         {hamburgerOpen ? (
           <HiX
@@ -39,7 +47,7 @@ const Header = ({
           />
         )}
         {hamburgerOpen ? (
-          <HamburgerMenu>
+          <HamburgerMenu darkMode={darkMode}>
             <ul>
               {darkMode ? (
                 <HiSun
@@ -55,10 +63,18 @@ const Header = ({
                 />
               )}
 
+              <Link
+                to="/donation"
+                style={{ textDecoration: "none" }}
+                onClick={handleToggle}
+              >
+                <li className="active">Donation</li>
+              </Link>
+            </ul>
+            <ul>
               <li>
                 <strong>Coming:</strong>
               </li>
-              <li>Donation</li>
               <li>More details of my journey</li>
               <li>Social functions</li>
             </ul>

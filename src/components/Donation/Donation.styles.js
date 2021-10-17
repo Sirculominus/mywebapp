@@ -5,13 +5,14 @@ export const Wrapper = styled.div`
     props.darkMode
       ? "radial-gradient(circle, rgba(67,67,68,0.8813900560224089) 5%, rgba(67,67,68,1) 25%, rgba(67,67,68,1) 100%)"
       : "radial-gradient(ellipse at center,rgba(255, 255, 255, 1) 0%,rgba(229, 229, 229, 1) 100%)"};
-  margin: 30px 30px 250px;
+  margin: 30px 30px 100px;
+  padding: 0 0 40px 0;
   background-size: 100%, cover;
   background-position: center;
   border-radius: 30px;
   animation: animateLandingCard 2s;
-  height: 500px;
-  position: relative;
+  min-height: 500px;
+  max-height: 1000px;
   box-shadow: 0 0 80px rgba(0, 0, 0, 0.2);
 
   &:hover {
@@ -29,9 +30,17 @@ export const Wrapper = styled.div`
 `;
 
 export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: var(--maxWidth);
+  padding: 20px 150px;
+  margin: 0 auto;
+  height: auto;
+  width: 100%;
+
   h1 {
     text-align: center;
-    padding-top: 30px;
+    padding: 30px 0 20px 0;
   }
 
   form {
@@ -78,9 +87,53 @@ export const Content = styled.div`
     justify-content: center;
     display: flex;
   }
+
+  div {
+    text-align: center;
+  }
+  .icon {
+    padding-top: 40px;
+  }
+
+  p {
+    text-align: center;
+  }
 `;
 
-export const ResponseMessage = styled.h3`
+export const ErrorMessage = styled.div`
   text-align: center;
-  padding-top: 50px;
+  margin-top: 20px;
+  position: relative;
+
+  div {
+    position: relative;
+    background-color: #ffabab;
+    width: auto;
+    margin: auto;
+    border-radius: 6px;
+    min-height: 50px;
+    max-height: 500px;
+  }
+
+  p {
+    position: relative;
+    color: red;
+    font-weight: bold;
+    width: 100%;
+    margin: auto 0;
+    padding: 20px 0;
+  }
 `;
+
+export const ResponseMessage = styled.div`
+  position: relative;
+  text-align: center;
+
+  h1 {
+    position: absolute;
+    width: 100%;
+    top: 100px;
+  }
+`;
+
+export const Filler = styled.div``;

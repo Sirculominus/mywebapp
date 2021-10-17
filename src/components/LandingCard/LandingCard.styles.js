@@ -63,4 +63,16 @@ export const List = styled.ul`
 
 export const ListItem = styled.li`
   margin: 90px 0;
+
+  a {
+    color: inherit;
+  }
+
+  svg {
+    margin: 0 20px 0 0;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
 `;

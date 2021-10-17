@@ -7,8 +7,10 @@ import Login from "./components/login";
 import Home from "./components/Home";
 import HandleOAuthLogin from "./components/handleOAuthLogin";
 import Signup from "./components/signup";
+import Donation from "./components/Donation/index";
+import Footer from "./components/Footer/index";
 // Styling
-import { Body } from "./App.styles";
+import { Body, Wrapper } from "./App.styles";
 import { GlobalStyle } from "./GlobalStyle";
 
 function App() {
@@ -19,6 +21,10 @@ function App() {
     setHamburgerOpen((prev) => !prev);
   };
 
+  const handleCloseHamburger = () => {
+    setHamburgerOpen(false);
+  };
+
   const handleToggleDarkMode = () => {
     setDarkMode((prev) => !prev);
     handleToggle();
@@ -26,21 +32,30 @@ function App() {
 
   return (
     <Router>
-      <Header
-        handleToggle={handleToggle}
-        hamburgerOpen={hamburgerOpen}
-        handleToggleDarkMode={handleToggleDarkMode}
-        darkMode={darkMode}
-      />
-      <Body hamburgerOpen={hamburgerOpen}>
-        <Switch>
-          <Route path="/" render={() => <Home darkMode={darkMode} />} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/handleoauthlogin" component={HandleOAuthLogin} />
-        </Switch>
-      </Body>
-      <GlobalStyle darkMode={darkMode} />
+      <Wrapper>
+        <Header
+          handleToggle={handleToggle}
+          hamburgerOpen={hamburgerOpen}
+          handleToggleDarkMode={handleToggleDarkMode}
+          darkMode={darkMode}
+          handleCloseHamburger={handleCloseHamburger}
+        />
+        <Body hamburgerOpen={hamburgerOpen}>
+          <Switch>
+            <Route exact path="/">
+              <Home darkMode={darkMode} />{" "}
+            </Route>
+            <Route path="/donation">
+              <Donation darkMode={darkMode} />{" "}
+            </Route>
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/handleoauthlogin" component={HandleOAuthLogin} />
+          </Switch>
+        </Body>
+        <Footer darkMode={darkMode} />
+        <GlobalStyle darkMode={darkMode} />
+      </Wrapper>
     </Router>
   );
 }

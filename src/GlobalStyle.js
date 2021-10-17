@@ -14,9 +14,14 @@ export const GlobalStyle = createGlobalStyle`
     --fontSmall: 1rem;
   }
 
+
   * {
     box-sizing: border-box;
     font-family: 'Abel', sans-serif;
+  }
+
+  html {
+    min-height: 100vh;
   }
 
   body {
@@ -24,6 +29,11 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     background-color: ${(props) =>
       props.darkMode ? "var(--black)" : "var(--white)"};
+    min-width: 900px;
+    position: relative;
+    min-height: 100vh;
+
+
     
     h1 {
       font-size: 2rem;

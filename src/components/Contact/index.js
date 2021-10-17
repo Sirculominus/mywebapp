@@ -35,7 +35,7 @@ const Contact = ({ darkMode }) => {
       const numA = 2;
       const numB = 3;
 
-      const result = await user.functions.Test(
+      const result = await user.functions.SendMail(
         subject,
         text,
         firstname,

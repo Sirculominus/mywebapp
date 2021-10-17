@@ -41,6 +41,17 @@ export const HamburgerMenu = styled.div`
   top: 100px;
 
   ul {
+    margin: 0 0 100px 0;
+
+    li.active {
+      border-color: ${({ darkMode }) =>
+        darkMode ? "var(--white)" : "var(--black)"};
+      border-style: solid;
+      border-width: 1px;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
   }
 
   li {
@@ -48,9 +59,7 @@ export const HamburgerMenu = styled.div`
     padding: 10px 0 10px 0;
     margin: 0 auto;
     list-style-type: none;
-    &:hover {
-      transform: scale(1.2);
-    }
+    text-align: center;
   }
 
   svg {

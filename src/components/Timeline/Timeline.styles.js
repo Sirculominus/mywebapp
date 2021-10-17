@@ -55,6 +55,10 @@ export const Content = styled.div`
     list-style-type: square;
     margin: 7px 0;
   }
+
+  div {
+    text-align: center;
+  }
 `;
 
 export const Box = styled.div`
