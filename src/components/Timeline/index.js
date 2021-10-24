@@ -4,7 +4,7 @@ import { Wrapper, Content, Box, Year, Title } from "./Timeline.styles";
 // Api service
 import EventDataService from "../../services/event";
 
-const Timeline = ({ darkMode }) => {
+const Timeline = ({ darkMode, scrollPercentage }) => {
   const [events, setEvents] = useState([]);
 
   const retrieveEvents = () => {
@@ -22,7 +22,7 @@ const Timeline = ({ darkMode }) => {
   }, []);
 
   return (
-    <Wrapper darkMode={darkMode}>
+    <Wrapper darkMode={darkMode} scrollPercentage={scrollPercentage}>
       <Title>My journey</Title>
       {events.map((event, index) => {
         var dateFrom = new Date(event.date_from);

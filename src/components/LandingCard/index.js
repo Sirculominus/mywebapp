@@ -11,10 +11,11 @@ import {
 } from "../LandingCard/LandingCard.styles";
 // Icons
 import { FaLinkedin, FaGithubSquare } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
-const LandingCard = ({ darkMode }) => {
+const LandingCard = ({ darkMode, scrollPercentage, windowSize }) => {
   return (
-    <Wrapper darkMode={darkMode}>
+    <Wrapper darkMode={darkMode} scrollPercentage={scrollPercentage}>
       <Content>
         <Left>
           <Image src="/images/portrait.jpg" alt="Portrait" />
@@ -42,14 +43,17 @@ const LandingCard = ({ darkMode }) => {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                <FaLinkedin size="40" />
+                <FaLinkedin size={windowSize.width < 1600 ? "60" : "40"} />
               </a>
               <a
                 href="https://github.com/Sirculominus"
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                <FaGithubSquare size="40" />
+                <FaGithubSquare size={windowSize.width < 1600 ? "60" : "40"} />
+              </a>
+              <a href="mailto:sindus@hotmail.com">
+                <MdEmail size={windowSize.width < 1600 ? "60" : "40"} />
               </a>
             </ListItem>
           </List>

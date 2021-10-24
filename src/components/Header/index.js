@@ -12,6 +12,7 @@ const Header = ({
   handleToggleDarkMode,
   darkMode,
   handleCloseHamburger,
+  windowSize,
 }) => {
   return (
     <Wrapper darkMode={darkMode}>
@@ -32,7 +33,7 @@ const Header = ({
                 ? { margin: "10px 0 0 0", color: "var(--white)" }
                 : { margin: "10px 0 0 0", color: "var(--black)" }
             }
-            size="40"
+            size={windowSize.width < 1600 ? "70" : "40"}
             onClick={handleToggle}
           />
         ) : (
@@ -42,7 +43,7 @@ const Header = ({
                 ? { margin: "10px 0 0 0", color: "var(--white)" }
                 : { margin: "10px 0 0 0", color: "var(--black)" }
             }
-            size="40"
+            size={windowSize.width < 1600 ? "70" : "40"}
             onClick={handleToggle}
           />
         )}
@@ -52,14 +53,30 @@ const Header = ({
               {darkMode ? (
                 <HiSun
                   onClick={handleToggleDarkMode}
-                  style={{ color: "var(--white)", float: "right" }}
-                  size="40"
+                  style={
+                    windowSize.width < 1600
+                      ? {
+                          color: "var(--white)",
+                          float: "right",
+                          margin: "30px 0 0",
+                        }
+                      : { color: "var(--white)", float: "right" }
+                  }
+                  size={windowSize.width < 1600 ? "70" : "40"}
                 />
               ) : (
                 <HiMoon
                   onClick={handleToggleDarkMode}
-                  style={{ color: "var(--black)", float: "right" }}
-                  size="40"
+                  style={
+                    windowSize.width < 1600
+                      ? {
+                          color: "var(--black)",
+                          float: "right",
+                          margin: "30px 0 0",
+                        }
+                      : { color: "var(--black)", float: "right" }
+                  }
+                  size={windowSize.width < 1600 ? "70" : "40"}
                 />
               )}
 

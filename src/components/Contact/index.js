@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 // MongoDB Realm
 import * as Realm from "realm-web";
 
-const Contact = ({ darkMode }) => {
+const Contact = ({ darkMode, scrollPercentage }) => {
   const { register, handleSubmit } = useForm();
   const [result, setResult] = useState(null);
   const onSubmit = (data) => {
@@ -51,7 +51,7 @@ const Contact = ({ darkMode }) => {
   }
 
   return (
-    <Wrapper darkMode={darkMode}>
+    <Wrapper darkMode={darkMode} scrollPercentage={scrollPercentage}>
       <Content>
         {result ? (
           <>
@@ -64,10 +64,22 @@ const Contact = ({ darkMode }) => {
           <>
             <h1>Contact me!</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <input {...register("firstName")} placeholder="First name" />
-              <input {...register("lastName")} placeholder="Last name" />
-              <input {...register("email")} placeholder="Email" />
-              <input {...register("subject")} placeholder="Subject" />
+              <input
+                type="text"
+                {...register("firstName")}
+                placeholder="First name"
+              />
+              <input
+                type="text"
+                {...register("lastName")}
+                placeholder="Last name"
+              />
+              <input type="text" {...register("email")} placeholder="Email" />
+              <input
+                type="text"
+                {...register("subject")}
+                placeholder="Subject"
+              />
               <textarea {...register("message")} placeholder="Message" />
               <input type="submit" />
             </form>

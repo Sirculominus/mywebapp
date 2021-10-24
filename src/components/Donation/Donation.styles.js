@@ -15,10 +15,6 @@ export const Wrapper = styled.div`
   max-height: 1000px;
   box-shadow: 0 0 80px rgba(0, 0, 0, 0.2);
 
-  &:hover {
-    transform: scale(1.02);
-  }
-
   @keyframes animateLandingCard {
     from {
       opacity: 0;
@@ -54,6 +50,10 @@ export const Content = styled.div`
     border-radius: 6px;
     display: inline-block;
     border: 1px solid #ccc;
+  }
+
+  input[type="text"] {
+    text-indent: 20px;
   }
 
   textarea {

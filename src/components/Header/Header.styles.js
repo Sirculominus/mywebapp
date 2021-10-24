@@ -20,6 +20,10 @@ export const Content = styled.div`
   transition: height 0.5s;
   position: relative;
 
+  @media (max-width: 1600px) {
+    height: ${(props) => (props.hamburgerOpen ? "560px" : "120px")};
+  }
+
   button {
     height: 50px;
   }
@@ -31,7 +35,9 @@ export const Content = styled.div`
   }
 `;
 
-export const Text = styled.div``;
+export const Text = styled.div`
+  text-align: center; ;
+`;
 
 export const HamburgerMenu = styled.div`
   position: absolute;

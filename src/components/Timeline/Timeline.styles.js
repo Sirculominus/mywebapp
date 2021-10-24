@@ -14,10 +14,8 @@ export const Wrapper = styled.div`
   animation: animate 2s;
   padding-bottom: 50px;
   box-shadow: 0 0 80px rgba(0, 0, 0, 0.2);
-
-  &:hover {
-    transform: scale(1.02);
-  }
+  transform: ${({ scrollPercentage }) =>
+    scrollPercentage > 20 && scrollPercentage < 80 ? "scale(1.02)" : null};
 
   @keyframes animate {
     from {

@@ -4,12 +4,16 @@ import LandingCard from "./LandingCard/index";
 import Timeline from "./Timeline/index";
 import Contact from "./Contact/index";
 
-const Home = ({ darkMode }) => {
+const Home = ({ darkMode, scrollPercentage, windowSize }) => {
   return (
     <>
-      <LandingCard darkMode={darkMode} />
-      <Timeline darkMode={darkMode} />
-      <Contact darkMode={darkMode} />
+      <LandingCard
+        darkMode={darkMode}
+        scrollPercentage={scrollPercentage}
+        windowSize={windowSize}
+      />
+      <Timeline darkMode={darkMode} scrollPercentage={scrollPercentage} />
+      <Contact darkMode={darkMode} scrollPercentage={scrollPercentage} />
     </>
   );
 };

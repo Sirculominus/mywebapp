@@ -6,17 +6,17 @@ export const Wrapper = styled.div`
       ? "radial-gradient(circle, rgba(67,67,68,0.8813900560224089) 5%, rgba(67,67,68,1) 25%, rgba(67,67,68,1) 100%)"
       : "radial-gradient(ellipse at center,rgba(255, 255, 255, 1) 0%,rgba(229, 229, 229, 1) 100%)"};
   margin: 30px 30px 250px;
+  padding: 0 0 30px 0;
   background-size: 100%, cover;
   background-position: center;
   border-radius: 30px;
   animation: animateLandingCard 2s;
-  height: 500px;
+  height: auto;
   position: relative;
   box-shadow: 0 0 80px rgba(0, 0, 0, 0.2);
 
-  &:hover {
-    transform: scale(1.02);
-  }
+  transform: ${({ scrollPercentage }) =>
+    scrollPercentage > 80 ? "scale(1.02)" : null};
 
   @keyframes animateLandingCard {
     from {
@@ -42,15 +42,29 @@ export const Content = styled.div`
     line-height: 2em;
     width: 50%;
     margin: 0 50px 20px 50px;
-    border-radius: 6px;
+    border-radius: 30px;
     display: inline-block;
     border: 1px solid #ccc;
+    @media (max-width: 1600px) {
+      font-size: 40px;
+      width: 80%;
+    }
+  }
+
+  input[type="text"] {
+    text-indent: 20px;
   }
 
   textarea {
+    text-indent: 20px;
+    border-radius: 30px;
     height: 6em;
     width: 50%;
     margin: 0 50px 20px 50px;
+    @media (max-width: 1600px) {
+      font-size: 40px;
+      width: 80%;
+    }
   }
 
   input[type="submit"] {
@@ -60,10 +74,13 @@ export const Content = styled.div`
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
-    border-radius: 4px;
+    border-radius: 30px;
     cursor: pointer;
     &:hover {
       transform: scale(1.02);
+    }
+    @media (max-width: 1600px) {
+      width: 80%;
     }
   }
 

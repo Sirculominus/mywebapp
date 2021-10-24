@@ -12,10 +12,16 @@ import Footer from "./components/Footer/index";
 // Styling
 import { Body, Wrapper } from "./App.styles";
 import { GlobalStyle } from "./GlobalStyle";
+// Hooks
+import useWindowSize from "./hooks/useWindowSize";
+import useDarkMode from "./hooks/useDarkMode";
+import useScrollPosition from "./hooks/useScrollPosition";
 
 function App() {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useDarkMode();
+  const windowSize = useWindowSize();
+  const scrollPosition = useScrollPosition();
 
   const handleToggle = () => {
     setHamburgerOpen((prev) => !prev);
@@ -26,10 +32,24 @@ function App() {
   };
 
   const handleToggleDarkMode = () => {
-    setDarkMode((prev) => !prev);
+    setDarkMode(!darkMode);
     handleToggle();
   };
 
+  var limit =
+    Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.clientHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    ) - window.innerHeight;
+
+  let scrollPercentage = (scrollPosition / limit) * 100;
+
+  console.log("limit: " + limit);
+  console.log("Scrollposition: " + scrollPosition);
+  console.log("Scrollpercentage: " + scrollPercentage);
   return (
     <Router>
       <Wrapper>
@@ -39,11 +59,16 @@ function App() {
           handleToggleDarkMode={handleToggleDarkMode}
           darkMode={darkMode}
           handleCloseHamburger={handleCloseHamburger}
+          windowSize={windowSize}
         />
         <Body hamburgerOpen={hamburgerOpen}>
           <Switch>
             <Route exact path="/">
-              <Home darkMode={darkMode} />{" "}
+              <Home
+                windowSize={windowSize}
+                darkMode={darkMode}
+                scrollPercentage={scrollPercentage}
+              />{" "}
             </Route>
             <Route path="/donation">
               <Donation darkMode={darkMode} />{" "}

@@ -12,9 +12,8 @@ export const Wrapper = styled.div`
   animation: animateLandingCard 2s;
   box-shadow: 0 0 80px rgba(0, 0, 0, 0.2);
 
-  &:hover {
-    transform: scale(1.02);
-  }
+  transform: ${({ scrollPercentage }) =>
+    scrollPercentage < 20 ? "scale(1.02)" : null};
 
   @keyframes animateLandingCard {
     from {
@@ -62,7 +61,7 @@ export const List = styled.ul`
 `;
 
 export const ListItem = styled.li`
-  margin: 90px 0;
+  margin: 80px 0;
 
   a {
     color: inherit;

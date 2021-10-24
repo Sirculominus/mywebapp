@@ -2,16 +2,24 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   :root {
-    --maxWidth: 1280px;
+    --maxWidth: 1200px;
     --white: #fff;
     --black: #000000;
     --lightGrey: #eee;
     --medGrey: #353535;
     --darkGrey: #1c1c1c;
     --fontSuperBig: 2.5rem;
+    --fontVeryBig: 2rem;
     --fontBig: 1.5rem;
     --fontMed: 1.2rem;
     --fontSmall: 1rem;
+    @media (max-width: 1600px) {
+    --fontSuperBig: 3rem;
+    --fontVeryBig: 2.5rem;
+    --fontBig: 2.0rem;
+    --fontMed: 1.5rem;
+    --fontSmall: 1.2rem;
+    }
   }
 
 
@@ -30,25 +38,29 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${(props) =>
       props.darkMode ? "var(--black)" : "var(--white)"};
     min-width: 900px;
+  max-width: 1200px;
     position: relative;
     min-height: 100vh;
 
-
+      @media (max-width: 1600px) {
+        max-width: 1600px;
+      }
     
     h1 {
-      font-size: 2rem;
+      font-size: var(--fontVeryBig);
       font-weight: 600;
       color: ${(props) =>
         props.darkMode ? "var(--lightGrey)" : "var(--black)"};
     }
 
     h2 {
+      font-size: var(--fontBig);
       color: ${(props) =>
         props.darkMode ? "var(--lightGrey)" : "var(--black)"}
     }
 
     h3 {
-      font-size: 1.1rem;
+      font-size: var(--fontMed);
       font-weight: 600;
       color: ${(props) =>
         props.darkMode ? "var(--lightGrey)" : "var(--black)"}
@@ -60,12 +72,13 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     p {
-      font-size: 1rem;
+      font-size: var(--fontSmall);
       color: ${(props) =>
         props.darkMode ? "var(--lightGrey)" : "var(--black)"};
     }
 
     li {
+      font-size: var(--fontSmall);
       color: ${(props) =>
         props.darkMode ? "var(--lightGrey)" : "var(--black)"}
     }

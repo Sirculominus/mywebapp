@@ -92,7 +92,11 @@ const Donation = ({ darkMode }) => {
               <h1>Want to donate some ETH? {"<3"}</h1>
               <p>Amount in USD: {AmountUsd.toFixed(2)}</p>
               <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register("amount")} placeholder="Amount in ETH" />
+                <input
+                  type="text"
+                  {...register("amount")}
+                  placeholder="Amount in ETH"
+                />
                 <input type="submit" />
               </form>
               {error ? (
